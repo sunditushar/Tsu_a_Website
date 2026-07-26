@@ -17,6 +17,7 @@ import {
   Mail,
   Copy,
   Send,
+  X,
 } from "lucide-react";
 
 const containerVariants: Variants = {
@@ -49,6 +50,7 @@ export default function TsuAWebsite() {
   const [copiedShare, setCopiedShare] = useState(false);
   const [copiedEmail, setCopiedEmail] = useState(false);
   const [imgError, setImgError] = useState(false);
+  const [showMailModal, setShowMailModal] = useState(false);
 
   const contactEmail = "sunditushar@gmail.com";
 
@@ -81,6 +83,9 @@ export default function TsuAWebsite() {
     setCopiedEmail(true);
     setTimeout(() => setCopiedEmail(false), 2000);
   };
+
+  const gmailComposeUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${contactEmail}&su=Collaboration%20Inquiry%20-%20Tsu_a`;
+  const mailtoUrl = `mailto:${contactEmail}?subject=Collaboration%20Inquiry%20-%20Tsu_a`;
 
   return (
     <main className="min-h-screen bg-gradient-to-b from-slate-900 via-slate-950 to-slate-900 text-slate-100 selection:bg-emerald-300 selection:text-slate-900 px-4 py-12 md:py-20 flex justify-center pb-28 relative overflow-hidden">
@@ -163,7 +168,6 @@ export default function TsuAWebsite() {
           </div>
 
           <div className="space-y-2">
-            {/* NAME IN CRISP HIGH-CONTRAST WHITE WITH SOFT GLOW */}
             <h1 className="text-3xl md:text-5xl font-extrabold tracking-tight text-white drop-shadow-[0_2px_12px_rgba(16,185,129,0.3)]">
               Tsu_a
             </h1>
@@ -278,12 +282,12 @@ export default function TsuAWebsite() {
             </div>
 
             <div className="flex flex-col sm:flex-row items-center gap-2.5">
-              <a
-                href={`mailto:${contactEmail}?subject=Collaboration%20Inquiry%20-%20Tsu_a`}
+              <button
+                onClick={() => setShowMailModal(true)}
                 className="w-full sm:w-auto flex-1 px-4 py-3 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white text-xs font-semibold flex items-center justify-center gap-2 transition-colors shadow-md shadow-emerald-200"
               >
                 <Send className="w-4 h-4" /> Send Email
-              </a>
+              </button>
 
               <button
                 onClick={handleCopyEmail}
@@ -320,6 +324,76 @@ export default function TsuAWebsite() {
           </div>
         </motion.section>
       </motion.div>
+
+      {/* EMAIL OPTION POPUP MODAL */}
+      <AnimatePresence>
+        {showMailModal && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-slate-950/70 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+          >
+            <motion.div
+              initial={{ scale: 0.9, y: 20 }}
+              animate={{ scale: 1, y: 0 }}
+              exit={{ scale: 0.9, y: 20 }}
+              className="bg-white rounded-2xl p-6 max-w-sm w-full space-y-4 shadow-2xl relative border border-emerald-100 text-slate-900"
+            >
+              <button
+                onClick={() => setShowMailModal(false)}
+                className="absolute right-4 top-4 text-slate-400 hover:text-slate-600 p-1"
+              >
+                <X className="w-5 h-5" />
+              </button>
+
+              <div className="text-center space-y-1 pt-2">
+                <h3 className="text-base font-bold text-slate-900">Send Email to Tsu_a</h3>
+                <p className="text-xs text-slate-500 font-medium">{contactEmail}</p>
+              </div>
+
+              <div className="grid gap-2.5 pt-2">
+                <a
+                  href={gmailComposeUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => setShowMailModal(false)}
+                  className="w-full p-3 rounded-xl bg-red-50 hover:bg-red-100/80 border border-red-200 text-red-700 font-semibold text-xs flex items-center justify-between transition-colors"
+                >
+                  <span className="flex items-center gap-2">
+                    <Mail className="w-4 h-4 text-red-600" /> Open in Gmail Web
+                  </span>
+                  <ExternalLink className="w-4 h-4 opacity-60" />
+                </a>
+
+                <a
+                  href={mailtoUrl}
+                  onClick={() => setShowMailModal(false)}
+                  className="w-full p-3 rounded-xl bg-emerald-50 hover:bg-emerald-100/80 border border-emerald-200 text-emerald-800 font-semibold text-xs flex items-center justify-between transition-colors"
+                >
+                  <span className="flex items-center gap-2">
+                    <Send className="w-4 h-4 text-emerald-600" /> Default Mail App (Outlook/Apple Mail)
+                  </span>
+                  <ExternalLink className="w-4 h-4 opacity-60" />
+                </a>
+
+                <button
+                  onClick={() => {
+                    handleCopyEmail();
+                    setShowMailModal(false);
+                  }}
+                  className="w-full p-3 rounded-xl bg-slate-100 hover:bg-slate-200/80 border border-slate-200 text-slate-800 font-semibold text-xs flex items-center justify-between transition-colors"
+                >
+                  <span className="flex items-center gap-2">
+                    <Copy className="w-4 h-4 text-slate-600" /> Copy Email Address
+                  </span>
+                  {copiedEmail ? <Check className="w-4 h-4 text-emerald-600" /> : null}
+                </button>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* STICKY BOTTOM AUDIO CONTROL BAR */}
       <AnimatePresence>
