@@ -177,44 +177,63 @@ export default function TsuAWebsite() {
           </div>
         </motion.section>
 
-        {/* LATEST RELEASE SPOTLIGHT CARD */}
+        {/* LATEST RELEASE SPOTLIGHT CARD - LARGE SQUARE COVER */}
         <motion.section variants={itemVariants}>
-          <div className="p-4 rounded-2xl bg-gradient-to-r from-emerald-100/90 via-white to-teal-100/90 border border-emerald-200 shadow-lg backdrop-blur-md flex items-center justify-between gap-4">
-            <div className="flex items-center gap-3">
-              {/* Cover Artwork Image Container */}
-              <div className="w-12 h-12 rounded-xl overflow-hidden border border-emerald-300 shrink-0 shadow-sm relative bg-emerald-200/50 flex items-center justify-center">
-                <img
-                  src="/sixthsensecover.jpeg"
-                  alt="Single Cover"
-                  className={`w-full h-full object-cover transition-all duration-500 ${isPlaying ? "scale-110" : "scale-100"}`}
-                  onError={(e) => {
-                    // Fallback to spinning icon if cover image isn't in public folder yet
-                    (e.target as HTMLElement).style.display = 'none';
-                  }}
-                />
-                <Disc className={`w-6 h-6 text-emerald-800 absolute ${isPlaying ? "animate-spin" : ""}`} />
-              </div>
-              <div>
-                <span className="text-[10px] uppercase font-bold tracking-wider text-emerald-800 bg-emerald-200/70 px-2 py-0.5 rounded-full border border-emerald-300/60">
-                  Latest Single Preview
-                </span>
-                <h3 className="text-sm font-bold text-slate-900 mt-1">
-                  Featured Release ""
-                </h3>
-                <p className="text-xs text-slate-600 font-medium">
-                  Press play to listen to a preview
-                </p>
+          <div className="p-5 md:p-6 rounded-3xl bg-white/95 border border-emerald-100/90 shadow-xl backdrop-blur-md space-y-4">
+            <div className="flex items-center justify-between">
+              <span className="text-[10px] uppercase font-bold tracking-wider text-emerald-800 bg-emerald-100/80 px-2.5 py-1 rounded-full border border-emerald-200">
+                Latest Single Preview
+              </span>
+              <Disc className={`w-5 h-5 text-emerald-600 ${isPlaying ? "animate-spin" : ""}`} />
+            </div>
+
+            {/* LARGE SQUARE COVER ARTWORK */}
+            <div className="w-full aspect-square rounded-2xl overflow-hidden border border-emerald-200 shadow-md relative bg-slate-900 group">
+              <img
+                src="/sixthsensecover.jpeg"
+                alt="Sixth Sense Cover"
+                className={`w-full h-full object-cover transition-all duration-700 ${isPlaying ? "scale-105 brightness-105" : "scale-100"}`}
+                onError={(e) => {
+                  (e.target as HTMLElement).style.display = 'none';
+                }}
+              />
+              <div className="absolute inset-0 bg-slate-900/20 flex items-center justify-center pointer-events-none">
+                {!isPlaying && (
+                  <div className="w-14 h-14 rounded-full bg-emerald-500/90 text-white flex items-center justify-center shadow-lg backdrop-blur-sm">
+                    <Play className="w-6 h-6 fill-current ml-1" />
+                  </div>
+                )}
               </div>
             </div>
 
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={togglePlay}
-              className="p-3 rounded-full bg-emerald-500 hover:bg-emerald-600 text-white shadow-md shadow-emerald-400/30 shrink-0 transition-colors"
-            >
-              {isPlaying ? <Pause className="w-5 h-5 fill-current" /> : <Play className="w-5 h-5 fill-current ml-0.5" />}
-            </motion.button>
+            {/* SONG DETAILS & CONTROLS BELOW COVER ART */}
+            <div className="flex items-center justify-between pt-1 gap-4">
+              <div className="space-y-1 truncate">
+                <h3 className="text-base font-extrabold text-slate-900 truncate">
+                  Sixth Sense
+                </h3>
+                <p className="text-xs text-slate-600 font-medium truncate">
+                  Out now on all major streaming platforms
+                </p>
+              </div>
+
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={togglePlay}
+                className="px-5 py-3 rounded-2xl bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-xs flex items-center gap-2 shadow-md shadow-emerald-200 shrink-0 transition-colors"
+              >
+                {isPlaying ? (
+                  <>
+                    <Pause className="w-4 h-4 fill-current" /> Pause
+                  </>
+                ) : (
+                  <>
+                    <Play className="w-4 h-4 fill-current" /> Play Preview
+                  </>
+                )}
+              </motion.button>
+            </div>
           </div>
         </motion.section>
 
@@ -424,7 +443,7 @@ export default function TsuAWebsite() {
               </div>
               <div className="truncate">
                 <p className="text-xs font-bold text-slate-900 truncate">Now Playing Snippet</p>
-                <p className="text-[10px] text-slate-600 font-medium truncate">Tsu_a - Featured Single</p>
+                <p className="text-[10px] text-slate-600 font-medium truncate">Tsu_a - Sixth Sense</p>
               </div>
             </div>
 
