@@ -155,7 +155,7 @@ export default function TsuAWebsite() {
               <div className="w-full h-full rounded-full bg-slate-900 flex items-center justify-center overflow-hidden relative">
                 {!imgError ? (
                   <img
-                    src="/profile.png"
+                    src="/Tsu_a profile1.jpeg"
                     alt=""
                     className="w-full h-full object-cover"
                     onError={() => setImgError(true)}
