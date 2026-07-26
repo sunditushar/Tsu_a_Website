@@ -177,9 +177,9 @@ export default function TsuAWebsite() {
           </div>
         </motion.section>
 
-        {/* LATEST RELEASE SPOTLIGHT CARD - LARGE SQUARE COVER */}
+        {/* LATEST RELEASE SPOTLIGHT CARD - CONSTRAINED SIZING */}
         <motion.section variants={itemVariants}>
-          <div className="p-5 md:p-6 rounded-3xl bg-white/95 border border-emerald-100/90 shadow-xl backdrop-blur-md space-y-4">
+          <div className="p-5 md:p-6 rounded-3xl bg-white/95 border border-emerald-100/90 shadow-xl backdrop-blur-md space-y-5 md:space-y-6">
             <div className="flex items-center justify-between">
               <span className="text-[10px] uppercase font-bold tracking-wider text-emerald-800 bg-emerald-100/80 px-2.5 py-1 rounded-full border border-emerald-200">
                 Latest Single Preview
@@ -187,8 +187,9 @@ export default function TsuAWebsite() {
               <Disc className={`w-5 h-5 text-emerald-600 ${isPlaying ? "animate-spin" : ""}`} />
             </div>
 
-            {/* LARGE SQUARE COVER ARTWORK */}
-            <div className="w-full aspect-square rounded-2xl overflow-hidden border border-emerald-200 shadow-md relative bg-slate-900 group">
+            {/* SIZED SQUARE COVER ARTWORK */}
+            {/* Added max-w-[260px] on mobile and max-w-[300px] on desktop with mx-auto to center it! */}
+            <div className="w-full max-w-[260px] sm:max-w-[300px] mx-auto aspect-square rounded-2xl overflow-hidden border border-emerald-200 shadow-lg relative bg-slate-900 group">
               <img
                 src="/sixthsensecover.jpeg"
                 alt="Sixth Sense Cover"
@@ -199,7 +200,7 @@ export default function TsuAWebsite() {
               />
               <div className="absolute inset-0 bg-slate-900/20 flex items-center justify-center pointer-events-none">
                 {!isPlaying && (
-                  <div className="w-14 h-14 rounded-full bg-emerald-500/90 text-white flex items-center justify-center shadow-lg backdrop-blur-sm">
+                  <div className="w-14 h-14 rounded-full bg-emerald-500/90 text-white flex items-center justify-center shadow-xl backdrop-blur-sm">
                     <Play className="w-6 h-6 fill-current ml-1" />
                   </div>
                 )}
@@ -207,9 +208,10 @@ export default function TsuAWebsite() {
             </div>
 
             {/* SONG DETAILS & CONTROLS BELOW COVER ART */}
-            <div className="flex items-center justify-between pt-1 gap-4">
-              <div className="space-y-1 truncate">
-                <h3 className="text-base font-extrabold text-slate-900 truncate">
+            {/* Changed to stack on mobile (flex-col) and sit side-by-side on desktop (sm:flex-row) */}
+            <div className="flex flex-col sm:flex-row items-center justify-between pt-1 gap-4">
+              <div className="space-y-1 truncate text-center sm:text-left w-full sm:w-auto">
+                <h3 className="text-lg font-extrabold text-slate-900 truncate">
                   Sixth Sense
                 </h3>
                 <p className="text-xs text-slate-600 font-medium truncate">
@@ -221,7 +223,7 @@ export default function TsuAWebsite() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={togglePlay}
-                className="px-5 py-3 rounded-2xl bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-xs flex items-center gap-2 shadow-md shadow-emerald-200 shrink-0 transition-colors"
+                className="w-full sm:w-auto px-6 py-3.5 rounded-2xl bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-sm flex items-center justify-center gap-2 shadow-md shadow-emerald-200 shrink-0 transition-colors"
               >
                 {isPlaying ? (
                   <>
