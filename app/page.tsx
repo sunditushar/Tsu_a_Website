@@ -156,7 +156,7 @@ export default function TsuAWebsite() {
                 {!imgError ? (
                   <img
                     src="/Tsu_a profile1.jpeg"
-                    alt=""
+                    alt="Tsu_a"
                     className="w-full h-full object-cover"
                     onError={() => setImgError(true)}
                   />
@@ -181,15 +181,29 @@ export default function TsuAWebsite() {
         <motion.section variants={itemVariants}>
           <div className="p-4 rounded-2xl bg-gradient-to-r from-emerald-100/90 via-white to-teal-100/90 border border-emerald-200 shadow-lg backdrop-blur-md flex items-center justify-between gap-4">
             <div className="flex items-center gap-3">
-              <div className="w-12 h-12 rounded-xl bg-emerald-200/80 border border-emerald-300 flex items-center justify-center text-emerald-800 shrink-0">
-                <Disc className={`w-6 h-6 ${isPlaying ? "animate-spin" : ""}`} />
+              {/* Cover Artwork Image Container */}
+              <div className="w-12 h-12 rounded-xl overflow-hidden border border-emerald-300 shrink-0 shadow-sm relative bg-emerald-200/50 flex items-center justify-center">
+                <img
+                  src="/sixthsensecover.jpeg"
+                  alt="Single Cover"
+                  className={`w-full h-full object-cover transition-all duration-500 ${isPlaying ? "scale-110" : "scale-100"}`}
+                  onError={(e) => {
+                    // Fallback to spinning icon if cover image isn't in public folder yet
+                    (e.target as HTMLElement).style.display = 'none';
+                  }}
+                />
+                <Disc className={`w-6 h-6 text-emerald-800 absolute ${isPlaying ? "animate-spin" : ""}`} />
               </div>
               <div>
                 <span className="text-[10px] uppercase font-bold tracking-wider text-emerald-800 bg-emerald-200/70 px-2 py-0.5 rounded-full border border-emerald-300/60">
                   Latest Single Preview
                 </span>
-                <h3 className="text-sm font-bold text-slate-900 mt-1">Featured Release Title</h3>
-                <p className="text-xs text-slate-600 font-medium">Press play to listen to a preview snippet</p>
+                <h3 className="text-sm font-bold text-slate-900 mt-1">
+                  Featured Release Title
+                </h3>
+                <p className="text-xs text-slate-600 font-medium">
+                  Press play to listen to a preview snippet
+                </p>
               </div>
             </div>
 
