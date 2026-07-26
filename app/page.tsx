@@ -50,7 +50,7 @@ export default function TsuAWebsite() {
   const [copiedShare, setCopiedShare] = useState(false);
   const [copiedEmail, setCopiedEmail] = useState(false);
 
-  const contactEmail = "your.email@example.com"; // Replace with your actual email address
+  const contactEmail = "sunditushar@gmail.com"; // Replace with your actual email address
 
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
