@@ -444,7 +444,7 @@ export default function TsuAWebsite() {
                 <Music2 className="w-5 h-5 animate-bounce" />
               </div>
               <div className="truncate">
-                <p className="text-xs font-bold text-slate-900 truncate">Now Playing Snippet</p>
+                <p className="text-xs font-bold text-slate-900 truncate">Now Playing</p>
                 <p className="text-[10px] text-slate-600 font-medium truncate">Tsu_a - Sixth Sense</p>
               </div>
             </div>
