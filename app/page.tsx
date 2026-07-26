@@ -2,9 +2,8 @@
 
 import React from "react";
 import { motion, Variants } from "framer-motion";
-import { Music, Video, Disc, Sparkles, ExternalLink } from "lucide-react";
+import { Music, Video, Disc, Sparkles, ExternalLink, Gamepad2, Image as ImageIcon } from "lucide-react";
 
-// Explicitly typed Variants to resolve TypeScript errors
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
@@ -43,6 +42,8 @@ export default function TsuAWebsite() {
           <div className="relative inline-block">
             <div className="w-24 h-24 md:w-28 md:h-28 rounded-full bg-gradient-to-tr from-indigo-500 via-purple-500 to-pink-500 p-[3px] shadow-lg shadow-indigo-500/20">
               <div className="w-full h-full rounded-full bg-slate-900 flex items-center justify-center overflow-hidden">
+                {/* Replace this icon with an <img> tag if you want a profile photo: */}
+                {/* <img src="/avatar.png" alt="Tsu_a" className="w-full h-full object-cover" /> */}
                 <Sparkles className="w-10 h-10 text-indigo-400 animate-pulse" />
               </div>
             </div>
@@ -52,19 +53,19 @@ export default function TsuAWebsite() {
               Tsu_a
             </h1>
             <p className="text-slate-400 text-sm md:text-base max-w-md mx-auto">
-              Music, Art & Digital Projects.
+              Music Production • Pixel Art • Game Development
             </p>
           </div>
         </motion.section>
 
-        {/* MUSIC & VIDEO EMBEDS */}
+        {/* FEATURED MUSIC & VIDEO */}
         <motion.section variants={itemVariants} className="space-y-4">
           <h2 className="text-xs uppercase font-semibold tracking-wider text-slate-500 flex items-center gap-2">
-            <Disc className="w-4 h-4 text-indigo-400" /> Featured Tracks & Videos
+            <Disc className="w-4 h-4 text-indigo-400" /> Featured Music & Videos
           </h2>
 
           <div className="grid gap-4">
-            {/* Spotify Embed */}
+            {/* Spotify Track Embed - Replace the ID after track/ with your Spotify track ID */}
             <motion.div
               whileHover={{ scale: 1.01 }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
@@ -82,7 +83,7 @@ export default function TsuAWebsite() {
               ></iframe>
             </motion.div>
 
-            {/* YouTube Embed */}
+            {/* YouTube Embed - Replace video ID after embed/ with your YouTube video ID */}
             <motion.div
               whileHover={{ scale: 1.01 }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
@@ -90,7 +91,7 @@ export default function TsuAWebsite() {
             >
               <div className="flex items-center justify-between px-1">
                 <span className="text-xs font-medium text-red-400 flex items-center gap-1.5">
-                  <Video className="w-4 h-4" /> Featured Video
+                  <Video className="w-4 h-4" /> Latest Music Video
                 </span>
                 <ExternalLink className="w-3.5 h-3.5 text-slate-500" />
               </div>
@@ -107,23 +108,28 @@ export default function TsuAWebsite() {
           </div>
         </motion.section>
 
-        {/* GALLERY GRID */}
+        {/* PIXEL ART & GAME GALLERY */}
         <motion.section variants={itemVariants} className="space-y-4">
-          <h2 className="text-xs uppercase font-semibold tracking-wider text-slate-500">
-            Gallery
+          <h2 className="text-xs uppercase font-semibold tracking-wider text-slate-500 flex items-center gap-2">
+            <ImageIcon className="w-4 h-4 text-purple-400" /> Gallery & Projects
           </h2>
           <div className="grid grid-cols-2 gap-3">
-            {[1, 2, 3, 4].map((id) => (
+            {[
+              { title: "Pixel Artwork 1", icon: ImageIcon },
+              { title: "Isometric Environment", icon: ImageIcon },
+              { title: "Game Dev Log", icon: Gamepad2 },
+              { title: "Music Visualizer", icon: Music },
+            ].map((item, idx) => (
               <motion.div
-                key={id}
+                key={idx}
                 whileHover={{ scale: 1.03 }}
                 transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                className="aspect-square rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center relative overflow-hidden group cursor-pointer"
+                className="aspect-square rounded-xl bg-slate-900 border border-slate-800 flex flex-col items-center justify-center relative overflow-hidden group cursor-pointer p-4 text-center"
               >
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-3">
-                  <span className="text-xs font-medium text-slate-300">Artwork #{id}</span>
-                </div>
-                <Music className="w-8 h-8 text-slate-700 group-hover:text-indigo-400 transition-colors" />
+                <item.icon className="w-8 h-8 text-slate-600 group-hover:text-indigo-400 transition-colors mb-2" />
+                <span className="text-xs font-medium text-slate-400 group-hover:text-slate-200 transition-colors">
+                  {item.title}
+                </span>
               </motion.div>
             ))}
           </div>
@@ -131,15 +137,18 @@ export default function TsuAWebsite() {
 
         {/* SOCIAL LINKS */}
         <motion.section variants={itemVariants} className="pt-4">
-          <div className="flex justify-center gap-3">
+          <div className="flex flex-wrap justify-center gap-3">
             {[
-              { name: "Spotify", color: "hover:border-green-500/50 hover:text-green-400" },
-              { name: "Apple Music", color: "hover:border-pink-500/50 hover:text-pink-400" },
-              { name: "YouTube", color: "hover:border-red-500/50 hover:text-red-400" },
+              { name: "Spotify", url: "#", color: "hover:border-green-500/50 hover:text-green-400" },
+              { name: "YouTube", url: "#", color: "hover:border-red-500/50 hover:text-red-400" },
+              { name: "SoundCloud", url: "#", color: "hover:border-orange-500/50 hover:text-orange-400" },
+              { name: "Twitter / X", url: "#", color: "hover:border-sky-500/50 hover:text-sky-400" },
             ].map((platform) => (
               <motion.a
                 key={platform.name}
-                href="#"
+                href={platform.url}
+                target="_blank"
+                rel="noopener noreferrer"
                 whileHover={{ y: -2 }}
                 whileTap={{ scale: 0.98 }}
                 className={`px-4 py-2 rounded-full border border-slate-800 bg-slate-900/50 text-xs font-medium text-slate-400 transition-colors ${platform.color}`}
