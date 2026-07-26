@@ -199,10 +199,10 @@ export default function TsuAWebsite() {
                   Latest Single Preview
                 </span>
                 <h3 className="text-sm font-bold text-slate-900 mt-1">
-                  Featured Release Title
+                  Featured Release ""
                 </h3>
                 <p className="text-xs text-slate-600 font-medium">
-                  Press play to listen to a preview snippet
+                  Press play to listen to a preview
                 </p>
               </div>
             </div>
