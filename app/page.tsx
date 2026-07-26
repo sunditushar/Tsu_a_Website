@@ -18,6 +18,7 @@ import {
   Copy,
   Send,
   X,
+  Code2,
 } from "lucide-react";
 
 const containerVariants: Variants = {
@@ -88,37 +89,71 @@ export default function TsuAWebsite() {
   const mailtoUrl = `mailto:${contactEmail}?subject=Collaboration%20Inquiry%20-%20Tsu_a`;
 
   return (
-    <main className="min-h-screen bg-gradient-to-b from-slate-900 via-slate-950 to-slate-900 text-slate-100 selection:bg-emerald-300 selection:text-slate-900 px-4 py-12 md:py-20 flex justify-center pb-28 relative overflow-hidden">
-      {/* BACKGROUND FLOATING PASTEL CIRCLES & TRIANGLES */}
+    <main className="min-h-screen bg-gradient-to-b from-slate-900 via-slate-950 to-slate-900 text-slate-100 selection:bg-emerald-300 selection:text-slate-900 px-4 py-12 md:py-20 flex flex-col items-center justify-between pb-28 relative overflow-hidden">
+      
+      {/* BACKGROUND FLOATING PASTEL CIRCLES & TRIANGLES (ENHANCED QUANTITY) */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
+        {/* Top Left Blob */}
         <motion.div
           animate={{ y: [0, -20, 0], x: [0, 15, 0] }}
           transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
           className="absolute -top-10 -left-10 w-56 h-56 md:w-72 md:h-72 rounded-full bg-emerald-400/10 blur-3xl"
         />
 
+        {/* Top Right Square/Triangle 1 */}
         <motion.div
           animate={{ y: [0, 25, 0], rotate: [0, 45, 0] }}
           transition={{ duration: 9, repeat: Infinity, ease: "easeInOut" }}
           className="absolute top-20 right-[5%] w-16 h-16 md:w-24 md:h-24 border-[8px] border-emerald-300/20 rounded-2xl"
         />
 
+        {/* Top Left Floating Square 2 */}
+        <motion.div
+          animate={{ y: [0, -18, 0], rotate: [12, -25, 12] }}
+          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-44 left-[6%] w-12 h-12 border-[6px] border-teal-300/25 rounded-xl"
+        />
+
+        {/* Mid Left Blob */}
         <motion.div
           animate={{ y: [0, -30, 0], x: [0, -10, 0] }}
           transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
           className="absolute top-1/3 -left-12 w-48 h-48 rounded-full bg-teal-300/10 blur-3xl"
         />
 
+        {/* Mid Right Floating Square 3 */}
+        <motion.div
+          animate={{ y: [0, 22, 0], rotate: [45, 90, 45] }}
+          transition={{ duration: 11, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-1/2 right-[8%] w-14 h-14 border-[6px] border-emerald-300/20 rounded-xl"
+        />
+
+        {/* Lower Left Square 4 */}
+        <motion.div
+          animate={{ y: [0, -20, 0], rotate: [-10, 30, -10] }}
+          transition={{ duration: 9.5, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-2/3 left-[4%] w-10 h-10 border-[5px] border-teal-200/20 rounded-lg"
+        />
+
+        {/* Lower Right Square 5 */}
         <motion.div
           animate={{ y: [0, -25, 0], rotate: [0, -30, 0] }}
           transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
           className="absolute top-2/3 right-8 w-20 h-20 border-[8px] border-teal-300/20 rounded-2xl"
         />
 
+        {/* Bottom Left Circle */}
         <motion.div
           animate={{ y: [0, 20, 0], x: [0, 20, 0] }}
           transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
           className="absolute bottom-20 left-[8%] w-16 h-16 rounded-full bg-emerald-300/20 blur-xl"
+        />
+
+        {/* Bottom Right Floating Square 6 */}
+        <motion.div
+          animate={{ y: [0, -15, 0], rotate: [15, -15, 15] }}
+          transition={{ duration: 7.5, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute bottom-10 right-[15%] w-10 h-10 border-[4px] border-emerald-300/25 rounded-lg"
         />
       </div>
 
@@ -177,7 +212,7 @@ export default function TsuAWebsite() {
           </div>
         </motion.section>
 
-        {/* LATEST RELEASE SPOTLIGHT CARD - CONSTRAINED SIZING */}
+        {/* LATEST RELEASE SPOTLIGHT CARD */}
         <motion.section variants={itemVariants}>
           <div className="p-5 md:p-6 rounded-3xl bg-white/95 border border-emerald-100/90 shadow-xl backdrop-blur-md space-y-5 md:space-y-6">
             <div className="flex items-center justify-between">
@@ -188,7 +223,6 @@ export default function TsuAWebsite() {
             </div>
 
             {/* SIZED SQUARE COVER ARTWORK */}
-            {/* Added max-w-[260px] on mobile and max-w-[300px] on desktop with mx-auto to center it! */}
             <div className="w-full max-w-[260px] sm:max-w-[300px] mx-auto aspect-square rounded-2xl overflow-hidden border border-emerald-200 shadow-lg relative bg-slate-900 group">
               <img
                 src="/sixthsensecover.jpeg"
@@ -208,7 +242,6 @@ export default function TsuAWebsite() {
             </div>
 
             {/* SONG DETAILS & CONTROLS BELOW COVER ART */}
-            {/* Changed to stack on mobile (flex-col) and sit side-by-side on desktop (sm:flex-row) */}
             <div className="flex flex-col sm:flex-row items-center justify-between pt-1 gap-4">
               <div className="space-y-1 truncate text-center sm:text-left w-full sm:w-auto">
                 <h3 className="text-lg font-extrabold text-slate-900 truncate">
@@ -359,6 +392,13 @@ export default function TsuAWebsite() {
           </div>
         </motion.section>
       </motion.div>
+
+      {/* FOOTER CREDITS */}
+      <footer className="relative z-10 pt-10 text-center">
+        <p className="text-[11px] text-slate-400 font-medium flex items-center justify-center gap-1">
+          Designed & Built by <span className="text-emerald-300 font-bold">Tushar Sundi</span>
+        </p>
+      </footer>
 
       {/* EMAIL OPTION POPUP MODAL */}
       <AnimatePresence>
