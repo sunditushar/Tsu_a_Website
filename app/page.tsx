@@ -85,8 +85,8 @@ export default function TsuAWebsite() {
     setTimeout(() => setCopiedEmail(false), 2000);
   };
 
-  const gmailComposeUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${contactEmail}&su=Collaboration%20Inquiry%20-%20Tsu_a`;
-  const mailtoUrl = `mailto:${contactEmail}?subject=Collaboration%20Inquiry%20-%20Tsu_a`;
+  const gmailComposeUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${contactEmail}&su=Collaboration%20Inquiry%20-%20Tsu.a`;
+  const mailtoUrl = `mailto:${contactEmail}?subject=Collaboration%20Inquiry%20-%20Tsu.a`;
 
   return (
     <main className="min-h-screen bg-gradient-to-b from-slate-900 via-slate-950 to-slate-900 text-slate-100 selection:bg-emerald-300 selection:text-slate-900 px-4 py-12 md:py-20 flex flex-col items-center justify-between pb-28 relative overflow-hidden">
@@ -190,8 +190,8 @@ export default function TsuAWebsite() {
               <div className="w-full h-full rounded-full bg-slate-900 flex items-center justify-center overflow-hidden relative">
                 {!imgError ? (
                   <img
-                    src="/Tsu_a profile1.jpeg"
-                    alt="Tsu_a"
+                    src="/Tsu.a profile1.jpeg"
+                    alt="Tsu.a"
                     className="w-full h-full object-cover"
                     onError={() => setImgError(true)}
                   />
@@ -204,7 +204,7 @@ export default function TsuAWebsite() {
 
           <div className="space-y-2">
             <h1 className="text-3xl md:text-5xl font-extrabold tracking-tight text-white drop-shadow-[0_2px_12px_rgba(16,185,129,0.3)]">
-              Tsu_a
+              Tsu.a
             </h1>
             <p className="text-emerald-200/90 text-sm md:text-base max-w-md mx-auto flex items-center justify-center gap-1.5 font-medium">
               <Mic2 className="w-4 h-4 text-emerald-300" /> Singer & Songwriter
@@ -423,7 +423,7 @@ export default function TsuAWebsite() {
               </button>
 
               <div className="text-center space-y-1 pt-2">
-                <h3 className="text-base font-bold text-slate-900">Send Email to Tsu_a</h3>
+                <h3 className="text-base font-bold text-slate-900">Send Email to Tsu.a</h3>
                 <p className="text-xs text-slate-500 font-medium">{contactEmail}</p>
               </div>
 
@@ -485,7 +485,7 @@ export default function TsuAWebsite() {
               </div>
               <div className="truncate">
                 <p className="text-xs font-bold text-slate-900 truncate">Now Playing</p>
-                <p className="text-[10px] text-slate-600 font-medium truncate">Tsu_a - Sixth Sense</p>
+                <p className="text-[10px] text-slate-600 font-medium truncate">Tsu.a - Sixth Sense</p>
               </div>
             </div>
 
