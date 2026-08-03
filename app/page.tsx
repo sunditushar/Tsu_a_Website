@@ -19,6 +19,7 @@ import {
   Send,
   X,
   Code2,
+  Video,
 } from "lucide-react";
 
 const containerVariants: Variants = {
@@ -91,7 +92,7 @@ export default function TsuAWebsite() {
   return (
     <main className="min-h-screen bg-gradient-to-b from-slate-900 via-slate-950 to-slate-900 text-slate-100 selection:bg-emerald-300 selection:text-slate-900 px-4 py-12 md:py-20 flex flex-col items-center justify-between pb-28 relative overflow-hidden">
       
-      {/* BACKGROUND FLOATING PASTEL CIRCLES & TRIANGLES (ENHANCED QUANTITY) */}
+      {/* BACKGROUND FLOATING PASTEL CIRCLES & TRIANGLES */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
         {/* Top Left Blob */}
         <motion.div
@@ -303,10 +304,17 @@ export default function TsuAWebsite() {
               },
               {
                 platform: "YouTube Music",
-                url: "https://music.youtube.com/@tusharsundi",
-                desc: "Subscribe for music uploads & official releases",
+                url: "https://music.youtube.com/channel/UCb7AinxOvTHTbhCjwTnAUzA?si=JZikaN3zZOFm-VJH",
+                desc: "Stream official releases & Topic tracks",
                 color: "hover:border-amber-300 hover:bg-amber-50/90 text-amber-600",
                 icon: ExternalLink,
+              },
+              {
+                platform: "YouTube Channel",
+                url: "https://www.youtube.com/@tusharsundi",
+                desc: "Subscribe for music videos & official content",
+                color: "hover:border-red-300 hover:bg-red-50/90 text-red-600",
+                icon: Video,
               },
             ].map((item, idx) => (
               <motion.a
